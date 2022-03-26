@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex</title>
+    <style>
+        menu{
+            display: flex;
+            justify-content: space-between;
+        }
+        #logo{
+            width: 30px;
+            height: 30px;
+        }
+
+        #demo1{
+            display: flex;
+            height: 50px;
+            margin-left: 200px;
+            justify-content: space-between;
+            /* align-items: flex-end; */
+        }
+        #demo1>div{
+            width: 280px;
+            background-color: pink;
+        }
+
+        #demo2{
+            display: flex;
+            flex-wrap: wrap-reverse;
+            /* height: 50px; */
+            /* margin-left: 200px; */
+            justify-content: space-between;
+        }
+        #demo2>div{
+            width: 280px;
+            background-color: lightgreen;
+        }
+
+        #demo3{
+            display: flex;
+            /* flex-direction: column-reverse; */
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        #demo3>div{
+            width: 280px;
+            background-color: lightseagreen;
+        }
+        #demo3>div:nth-child(2){
+            order: -1;
+            flex-grow: 2;
+        }
+        #demo3>div:nth-child(7){
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <menu>
+            <div id="logo">logo</div>
+            <div>test1</div>
+            <div>test2</div>
+            <div id="loginOut">
+                <a href="" id="logout">logout</a>
+            </div>
+        </menu>
+        <div id="demo1">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+
+        <div id="demo2">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+        </div>
+
+        <div id="demo3">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+        </div>
+    </main>
+</body>
+</html>

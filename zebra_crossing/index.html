@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斑马线</title>
+    <style>
+        body{
+             /* 斑马条纹背景 */
+            background: linear-gradient(#fb3 50%, #58a 50%);
+            background-size: 100% 30px;
+        }
+
+        #demo
+        {
+            width: 500px;
+            height: 300px;
+            margin: 0 auto;
+            margin-top: 200px;
+            padding: 0;
+            background-color: white;
+        }
+        #demo li{
+            list-style: none;
+            height: 25px;
+        }
+        #demo li:nth-child(odd){
+            background-color: black;
+        }
+        #demo li:nth-child(even){
+            background-color: white;
+        }
+
+        #test{
+            width: 500px;
+            height: 300px;
+            margin: 0 auto;
+            background: linear-gradient(#fb3 50%, #58a 50%);
+            background-size: 100% 30px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="demo">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <div id="test">
+
+    </div>
+</body>
+</html>

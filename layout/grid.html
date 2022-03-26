@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html, body{height: 100%;}
+        body{
+            width: 100%;
+            display: grid;
+            /* grid-template-rows: 100px; */
+            grid-template-columns: 300px auto 300px;
+        }
+        .column{
+            height: 100%;
+        }
+        .left{
+            width: 300px;
+            background-color: green;
+        }
+        .right{
+            width: 300px;
+            background-color: blue;
+        }
+        .middle{
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="column left">left</div>
+    <div class="column middle">
+        middle <br />
+        middle <br />
+        middle <br />
+        middle <br />
+        middle <br />
+        middle <br />
+        middle <br />
+        middle <br />
+
+        <div class="bottom"></div>
+    </div>
+    <div class="column right">right</div>
+</body>
+</html>
