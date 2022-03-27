@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array</title>
+    <script>
+        console.log(Array.prototype)
+
+        /* 不改变原数组
+        toString    转换方法
+        toLocaleString
+        valueOf     继承自Object
+
+        concat      操作
+        slice       splice会改变原数组
+
+        indexOf         位置
+        lastIndexOf
+
+        every   迭代
+        some
+        filter
+        forEach
+        map
+
+        reduce      缩小
+        reduceRight
+
+        at          //实验
+        copyWithin
+        entries
+        find
+        findIndex
+        flat
+        flatMap
+        includes
+        keys
+        join
+        values
+        */
+
+        var arr = [1, 3, 5, 7, 9]
+        console.log(arr.join('-'))
+
+
+        console.log(arr.slice(1, 3))
+
+        console.log(arr, 'slice')
+
+        /* 改变原数组
+        push    栈
+        pop
+
+        shift   队列
+        unshift
+
+        fill
+        splice
+
+        reverse     重排序
+        sort
+        */
+
+        if('change'){
+            var arr = [1, 3, 5, 7, 9]
+            arr.push(11)        
+            console.log(arr, 'push')
+            
+            arr.pop()
+            console.log(arr, 'pop')
+
+            arr.shift(1)
+            arr.unshift(222)
+            console.log(arr, 'shift', 'unshift')
+
+            arr.push(22)
+            arr.sort()
+            console.log(arr, '如果没有指明 compareFunction ，那么元素会按照转换为的字符串的诸个字符的Unicode位点进行排序')
+
+            arr.reverse()
+            console.log(arr, 'reverse')
+
+            arr.splice(1, 0, 50) // 新增
+            arr.splice(1, 1, 55)  // 修改
+            arr.splice(-1, 1)   // 删除
+            console.log(arr, 'splice')
+
+            arr.fill(1, 0)
+            console.log(arr, 'fill')
+        }
+
+        /* static
+        Array.from
+        Array.isArray
+        Array.of
+        */
+        
+        if('static'){
+            const obj = {}
+            const arr = Array.from(obj)
+            console.log('array static function')
+            console.log(arr, Array.isArray(obj), Array.isArray(arr))
+            console.log(Array.of(1, 3, 5, [8, 12]), '创建一个具有可变数量参数的新数组实例，而不考虑参数的数量或类型')
+        }
+    </script>
+</head>
+<body>
+    <noscript>
+        请开启js
+    </noscript>
+    console
+</body>
+</html>
