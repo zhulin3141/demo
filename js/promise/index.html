@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+    <script>
+        const c1 = "color: red"
+        const c2 = "color: green"
+        const c3 = "color: yellow; background: black;"
+
+        /*
+        reject后先匹配catch,会忽视catch之前的then,catch完匹配then
+        如果then里返回空promise会中断匹配
+        */
+        new Promise((resolve, reject)=>{
+            const s = false
+            if(s){
+                resolve()
+            }else{
+                reject()
+            }
+        }).then(value=>{
+            console.log('%ca1: then suc1', c1)
+        }, reason=>{
+            // throw new Error('我错了')
+            console.log('%ca1: then => catch fail1', c1)
+        }).catch(e => {
+            console.log('%ca1: then => catch => catch: ' + e, c1)
+        }).then(value=>{
+            console.log('%ca1: then => catch => catch => then', c1)
+        }).then(value=>{
+            return new Promise(()=>{})
+        }).then(value=>{
+            console.log('%ca1: catch => then => then new a empty promise', c1)
+        })
+
+
+        let p1 = new Promise((resolve, reject) => {
+            resolve('resolve in promise')
+            // reject('reject in promise')
+        })
+
+        let p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {resolve('resolve in promise but setTimeout')}, 10)
+        })
+
+        Promise.race([p2, p1])
+        .then((result) => {
+            console.log('%crace => then,' + result, c2)
+        }).then(value=>{
+            console.log('%crace => then => then ', c2)
+        })
+        .catch((error) => {
+            console.log('%crace => then => then => error' + error, c2)
+        })
+
+
+        Promise.resolve().then(() => {
+            console.log('%cb2 then and before throw', c3)
+            throw 'throw error1'
+        }).then(() => {
+            console.log('%cb2 then => then', c3)
+        }, err => {     
+            // 捕获错误
+            console.log('%cb2 then => then => err=>'+ err, c3)
+        }).then(() => {
+            // console.log(this)
+            console.log('%cb2 then => then => err=>then', c3)
+            throw 'throw error3'
+        }).then(() => {
+            // 错误捕获前的函数不会被调用
+            console.log('%cb2 then => then => err=>then=>then:', c3)
+        })
+        .then(()=>{
+            console.log('%cb2 then => then => err=>then=>then=>then:', c3)
+        })
+        .catch(err => {
+            console.log('%cb2 then => then => err=>then=>then=>then=>catch:' + err, c3, typeof err)
+        })
+
+
+        </script>
+</head>
+<body>
+    promise ... see console
+</body>
+</html>
