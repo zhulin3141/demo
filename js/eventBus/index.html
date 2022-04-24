@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventBus</title>
+    <script>
+        class EventBus {
+            constructor() {
+                this.events = Object.create(null)
+            }
+            on(event, fn) {
+                this.events[event] = this.events[event] || []
+                this.events[event].push(fn)
+            }
+            off(event, fn) {
+                const index = (this.events[event] || []).indexOf(fn)
+                if (index < -1) {
+                    return
+                } else {
+                    this.events[event].splice(index, 1)
+                }
+            }
+            emit(event) {
+                for (let e of this.events[event]) {
+                    e.apply(null, arguments)
+                }
+            }
+
+            once(event, fn) {
+                let _self = this
+                function handler() {
+                    _self.off(event, handler)
+                    fn.apply(null, arguments)
+                }
+                this.on(event, handler)
+            }
+        }
+        var bus = new EventBus()
+        bus.on('onclick', function () {
+            console.log('click1 fire')
+        })
+        bus.on('onclick', fn = function () {
+            console.log('click2 fire')
+        })
+        bus.on('bb', fn = function () {
+            console.log('bb')
+        })
+        bus.emit('onclick')
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
