@@ -1,0 +1,11 @@
+<script>
+async function test(){
+  let cc = await new Promise(resolve=>{resolve({
+    name: 'johnny'
+  })})
+  console.log('cc is ' + cc)
+}
+
+var a = test()
+console.log('a: ' + a)
+</script>
